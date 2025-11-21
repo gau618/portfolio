@@ -61,34 +61,42 @@ export default function Hero() {
         {/* Main cyan orb - follows mouse with parallax */}
         <motion.div
           style={{ x: x1, y: y1 }}
-          transition={{ type: "spring", stiffness: 100, damping: 30 }}
           className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-cyan-500/[0.22] rounded-full blur-3xl"
           animate={{
             scale: [1, 1.15, 1],
             opacity: [0.22, 0.35, 0.22],
           }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          transition={{
+            scale: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+            opacity: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+          }}
         />
         {/* Main purple orb - inverse mouse follow */}
         <motion.div
           style={{ x: x2, y: y2 }}
-          transition={{ type: "spring", stiffness: 100, damping: 30 }}
           className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-purple-500/[0.22] rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.22, 0.35, 0.22],
           }}
           transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 0.5,
+            scale: {
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.5,
+            },
+            opacity: {
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.5,
+            },
           }}
         />
         {/* Center rotating gradient */}
         <motion.div
           style={{ x: x3, y: y3 }}
-          transition={{ type: "spring", stiffness: 120, damping: 25 }}
           className="absolute top-1/2 left-1/2 w-[800px] h-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
           animate={{
             background: [
@@ -98,7 +106,9 @@ export default function Hero() {
             ],
             rotate: [0, 180, 360],
           }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          transition={{
+            rotate: { duration: 15, repeat: Infinity, ease: "linear" },
+          }}
         />
         {/* Additional accent orbs */}
         <motion.div
@@ -106,26 +116,30 @@ export default function Hero() {
             x: useTransform(mouseX, [0, dimensions.width], [30, -30]),
             y: useTransform(mouseY, [0, dimensions.height], [20, -20]),
           }}
-          transition={{ type: "spring", stiffness: 80, damping: 20 }}
           className="absolute top-1/3 right-1/3 w-80 h-80 bg-cyan-400/[0.18] rounded-full blur-2xl"
           animate={{
             scale: [1, 1.4, 1],
             opacity: [0.18, 0.3, 0.18],
           }}
-          transition={{ duration: 6, repeat: Infinity }}
+          transition={{
+            scale: { duration: 6, repeat: Infinity },
+            opacity: { duration: 6, repeat: Infinity },
+          }}
         />
         <motion.div
           style={{
             x: useTransform(mouseX, [0, dimensions.width], [-35, 35]),
             y: useTransform(mouseY, [0, dimensions.height], [-25, 25]),
           }}
-          transition={{ type: "spring", stiffness: 80, damping: 20 }}
           className="absolute bottom-1/3 left-1/3 w-80 h-80 bg-purple-400/[0.18] rounded-full blur-2xl"
           animate={{
             scale: [1, 1.3, 1],
             opacity: [0.18, 0.3, 0.18],
           }}
-          transition={{ duration: 7, repeat: Infinity, delay: 1 }}
+          transition={{
+            scale: { duration: 7, repeat: Infinity, delay: 1 },
+            opacity: { duration: 7, repeat: Infinity, delay: 1 },
+          }}
         />
         {/* Floating particles */}
         {[...Array(20)].map((_, i) => (
